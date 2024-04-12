@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://uzduotis-2.lt/servisai"
+    targetNamespace="http://uzduotis-2.lt/servisai"
+    elementFormDefault="qualified">
+
+    <!-- 1. Paprastas tipas, apribojantis kokį nors Schema standartinį tipą-->
+
+    <xs:simpleType name="pavadinimoTipas">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z ]{20,30}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="atlyginimoTipas">
+        <xs:restriction base="xs:double">
+            <xs:pattern value="\d{1,4}.\d{0,2}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="servisuType">
+        <xs:sequence>
+            <xs:element name="pavadinimas" type="xs:string" />
+            <xs:element name="direktoriai" type="direktoriausDarbuotojoTipas" />
+            <xs:element name="darbuotojuGrupes" type="darbuotojoTipas" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="servisas" type="servisuType"/>
+
+    <!-- 2. Prasmingas sąrašo tipas (list type)-->
+
+    <xs:element name="servisuListas" type ="servisuSarasas"/>
+
+    <xs:simpleType name="servisuSarasas">
+        <xs:list itemType="xs:integer" />
+    </xs:simpleType>
+
+    <!-- 3. Sudėtingi tipai su paprastu turiniu-->
+    <!-- 3.1 išvesti apribojimu (restriction) iš jūsų (ne XML Schema) bazinio tipo-->
+
+    <xs:simpleType name="darboGrupesTipas">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Dazytojai" />
+            <xs:enumeration value="Mechanikai" />
+            <xs:enumeration value="Kebulininkai" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="darboGrupiuKiekis">
+        <xs:simpleContent>
+            <xs:extension base="darboGrupesTipas">
+                <xs:attribute name="darbuotojuGrupe" type="xs:integer" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="tinkamaDarbuotojuGrupe">
+        <xs:simpleContent>
+            <xs:restriction base="darboGrupiuKiekis">
+                <xs:enumeration value="Dazytojai" />
+                <xs:enumeration value="Mechanikai" />
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- 3.2 išvesti praplėtimu (extension) iš jūsų bazinio tipo-->
+
+    <xs:complexType name="atlyginimasSuValiuta">
+        <xs:simpleContent>
+            <xs:extension base="atlyginimoTipas">
+                <xs:attribute name="valiuta" type="xs:string" fixed="EUR" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- 4. Sudėtingi tipai su sudėtingu turiniu -->
+    <!-- 4.1 Išvesti apribojimu -->
+
+    <xs:complexType name="darbuotojoTipas">
+        <xs:sequence>
+            <xs:element name="vardas" type="xs:string" />
+            <xs:element name="pavarde" type="xs:string" />
+            <xs:element name="gimimoData" type="xs:date" />
+            <xs:element name="atlyginimas" type="atlyginimasSuValiuta" />
+            <xs:element name="pareigos" type="xs:string" />
+            <xs:element name="telefonoNumeris" type="xs:string" />
+            <xs:element name="darboStazas" type="xs:integer" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="direktoriausDarbuotojoTipas">
+        <xs:complexContent>
+            <xs:restriction base="darbuotojoTipas">
+                <xs:sequence>
+                    <xs:element name="vardas" type="xs:string" />
+                    <xs:element name="pavarde" type="xs:string" />
+                    <xs:element name="gimimoData" type="xs:date" />
+                    <xs:element name="atlyginimas" type="atlyginimasSuValiuta" />
+                    <xs:element name="pareigos" type="xs:string" fixed="Direktorius" />
+                    <xs:element name="telefonoNumeris" type="xs:string" />
+                    <xs:element name="darboStazas" type="xs:integer" />
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- 4.2 išvesti praplėtimu -->
+
+    <xs:complexType name="reitingoPridejimas">
+        <xs:complexContent>
+            <xs:extension base="darbuotojoTipas">
+                <xs:sequence>
+                    <xs:element name="reitingas" type="xs:integer" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- 5. Pademonstruoti apribojimo principą - parodyti pavyzdį, kai apribojimo principas
+    pažeistas, ir žinoti, kaip reikia pataisyti pavyzdį" -->
+
+    <!-- 6. Sudėtingas tipas su mišriu turiniu -->
+
+    <xs:element name="direktoriai">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element name="vardas" type="xs:string" />
+                <xs:element name="pavarde" type="xs:string" />
+                <xs:element name="gimimoData" type="xs:date" />
+                <xs:element name="pareigos" type="xs:string" />
+                <xs:element name="atlyginimas" type="atlyginimasSuValiuta" />
+                <xs:element name="telefonoNumeris" type="xs:string" />
+                <xs:element name="darboStazas" type="xs:integer" />
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:unique name="unikalusAsmensKodas">
+            <xs:selector xpath=".//darbuotojas"/>
+            <xs:field xpath="@asmensKodas"/>
+        </xs:unique>
+
+        <!-- 8. Bent viena nuoroda (keyref) į unikalumo ribojimą (unique) arba raktą (key) -->
+
+        <xs:keyref name ="asmensKodoNuoroda" refer="unikalusAsmensKodas">
+            <xs:selector xpath =".//darbuotojas"/>
+            <xs:field xpath="@asmensKodas"/>
+        </xs:keyref>
+    </xs:element>
+
+
+    <!-- 7. Choice valdymo struktura-->
+    <!-- 
+        <xs:element name="item" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:choice>
+                    <xs:element name="book" type="bookType"/>
+                    <xs:element name="magazine" type="magazineType"/>
+                </xs:choice>
+            </xs:complexType>
+        </xs:element>
+    -->
+
+
+    <!-- 9. Visi jūsų susikurti tipai turi priklausyti jūsų vardų sričiai -->
+    <!-- (Visi tipai yra apibrėžti "http://uzduotis-2.lt/servisai" vardų srityje) -->
+
+    <!-- 10. Parašykite kam naudojamos XSD schemos? -->
+    <!-- XSD schemos naudojamos XML dokumentų struktūros ir turinio validacijai.
+    Jos apibrėžia, kokie elementai ir atributai, jų tipai ir reikšmės gali būti XML dokumente. -->
+</xs:schema>

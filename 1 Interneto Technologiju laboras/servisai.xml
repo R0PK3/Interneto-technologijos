@@ -1,0 +1,53 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<servisai xmlns="http://uzduotis-1.lt/servisai" xmlns:darb= "http://uzduotis-1.lt/darbuotojas">
+    <servisas>
+        <pavadinimas>Varzto broliai</pavadinimas>
+
+        <direktoriai>
+            <darb:darbuotojas asmensKodas = "56285648539">
+                <darb:vardas>Tomas</darb:vardas>
+                <darb:pavarde>Lukosevicius</darb:pavarde>
+                <darb:gimimoData>1962-11-11</darb:gimimoData>
+                <darb:atlyginimas valiuta="EUR">4400.5</darb:atlyginimas>
+                <darb:telefonoNumeris>+37051234567</darb:telefonoNumeris>
+                <darb:darboStazas trukme ="metai">9</darb:darboStazas>
+            </darb:darbuotojas>
+        </direktoriai>
+
+        <darbuotojuGrupes>
+            <darbuotojuGrupe tipas ="dazytojai">
+                <pareigos>Dazytojai</pareigos>
+                <darb:darbuotojas asmensKodas = "58741236951">
+                    <darb:vardas>Lukas</darb:vardas>
+                    <darb:pavarde>Tapkys</darb:pavarde>
+                    <darb:gimimoData>2000-01-01</darb:gimimoData>
+                    <darb:atlyginimas valiuta ="EUR">1500.3</darb:atlyginimas>
+                    <darb:telefonoNumeris>+37065214781</darb:telefonoNumeris>
+                    <darb:darboStazas trukme ="metai">3</darb:darboStazas>
+                </darb:darbuotojas>
+            </darbuotojuGrupe>
+            <darbuotojuGrupe tipas ="mechanikai">
+                <pareigos>Mechanikai</pareigos>
+                <darb:darbuotojas asmensKodas = "56874125941">
+                    <darb:vardas>Andrius</darb:vardas>
+                    <darb:pavarde>Kulys</darb:pavarde>
+                    <darb:gimimoData>1999-05-24</darb:gimimoData>
+                    <darb:atlyginimas valiuta ="EUR">1650.99</darb:atlyginimas>
+                    <darb:telefonoNumeris>+37065236514</darb:telefonoNumeris>
+                    <darb:darboStazas trukme ="metai">4</darb:darboStazas>
+                </darb:darbuotojas>
+                <darb:darbuotojas asmensKodas = "56214782365">
+                    <darb:vardas>Saulius</darb:vardas>
+                    <darb:pavarde>Dziaugys</darb:pavarde>
+                    <darb:gimimoData>1987-08-24</darb:gimimoData>
+                    <darb:atlyginimas valiuta="EUR">1870.01</darb:atlyginimas>
+                    <darb:telefonoNumeris>+37065552014</darb:telefonoNumeris>
+                    <darb:darboStazas trukme ="metai">6</darb:darboStazas>
+                </darb:darbuotojas>   
+            </darbuotojuGrupe>
+        </darbuotojuGrupes>
+    </servisas>
+    <!--servisas>
+        ...
+    </servisas -->
+</servisai>

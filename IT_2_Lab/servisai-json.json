@@ -1,0 +1,128 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id" : "http://uzduotis-2.lt/servisai",
+    "title" : "Servisai",
+    "description": "Surasomi duomenys apie servisa, pavadinimas, direktoriai bei darbuotojai",
+    "type": "object",
+    "properties": {
+        "servisai": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "pavadinimas": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "direktoriai": {
+                        "type": "array",
+                        "definitions": {
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "darbuotojas": {
+                                        "type": "object",
+                                        "properties": {
+                                            "vardas": {
+                                                "type": "string"
+                                            },
+                                            "pavarde": {
+                                                "type": "string"
+                                            },
+                                            "gimimoData": {
+                                                "type": "string",
+                                                "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+                                            },
+                                            "pareigos": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Direktorius",
+                                                    "Dazytojas",
+                                                    "Mechanikas",
+                                                    "Kebulininkas"
+                                                ]
+                                            },
+                                            "atlyginimas": {
+                                                "type": "number",
+                                                "pattern": "^[0-9]{4}.[0-9]{2}$"
+                                            },
+                                            "telefonoNumeris": {
+                                                "type": "string"
+                                            },
+                                            "darboStazas": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 50
+                                            }
+                                        },
+                                        "required": [
+                                            "vardas",
+                                            "pavarde",
+                                            "gimimoData",
+                                            "pareigos",
+                                            "atlyginimas",
+                                            "telefonoNumeris",
+                                            "darboStazas"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "darbuotojas"
+                                ]
+                            }
+                        }
+                    },
+                    "darbuotojuGrupes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "darbuotojas": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref" : "#/definitions/items"
+                                    },
+                                    "minItems" : 1
+                                }
+                            },
+                            "required": [
+                                "darbuotojas"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "pavadinimas",
+                    "direktoriai",
+                    "darbuotojuGrupes"
+                ]
+            },
+            "oneOf": [
+                {
+                    "properties": {
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "Veikia"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "Neveikia"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "required": [
+        "servisai"
+    ]
+}

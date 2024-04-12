@@ -1,0 +1,55 @@
+{
+	"servisai": [
+		{
+			"pavadinimas": "Varzto broliai",
+			"direktoriai": [
+				{
+					"darbuotojas": {
+						"vardas": "Tomas",
+						"pavarde": "Lukosevicius",
+						"gimimoData": "1962-11-11",
+						"atlyginimas": 4400.5,
+						"telefonoNumeris": "+37051234567",
+						"darboStazas": 9
+					}
+				}
+			],
+			"darbuotojuGrupes": [
+				{
+					"pareigos": "Dazytojai",
+					"darbuotojas": [
+						{
+							"vardas": "Lukas",
+							"pavarde": "Tapkys",
+							"gimimoData": "2000-01-01",
+							"atlyginimas": 1500.3,
+							"telefonoNumeris": "+37065214781",
+							"darboStazas": 3
+						}
+					]
+				},
+				{
+					"pareigos": "Mechanikai",
+					"darbuotojas": [
+						{
+							"vardas": "Andrius",
+							"pavarde": "Kulys",
+							"gimimoData": "1999-05-24",
+							"atlyginimas": 1650.99,
+							"telefonoNumeris": "+37065236514",
+							"darboStazas": 4
+						},
+						{
+							"vardas": "Saulius",
+							"pavarde": "Dziaugys",
+							"gimimoData": "1987-08-24",
+							"atlyginimas": 1870.01,
+							"telefonoNumeris": "+37065552014",
+							"darboStazas": 6
+						}
+					]
+				}
+			]
+		}
+	]
+}

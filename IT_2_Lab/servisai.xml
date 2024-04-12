@@ -1,0 +1,55 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<servisai xmlns="http://uzduotis-2.lt/servisai">
+    <servisas>
+        <pavadinimas>Varzto broliai</pavadinimas>
+
+        <direktoriai>
+            <darbuotojas asmensKodas = "56285648539">
+                <vardas>Tomas</vardas>
+                <pavarde>Lukosevicius</pavarde>
+                <gimimoData>1962-11-11</gimimoData>
+                <pareigos>Direktorius</pareigos>
+                <atlyginimas valiuta="EUR">4400.5</atlyginimas>
+                <telefonoNumeris>+37051234567</telefonoNumeris>
+                <darboStazas trukme ="metai">9</darboStazas>
+            </darbuotojas>
+        </direktoriai>
+
+        <darbuotojuGrupes>
+            <darbuotojuGrupe tipas ="dazytojai">
+                <darbuotojas asmensKodas = "58741236951">
+                    <vardas>Lukas</vardas>
+                    <pavarde>Tapkys</pavarde>
+                    <gimimoData>2000-01-01</gimimoData>
+                    <pareigos>Dazytojas</pareigos>
+                    <atlyginimas valiuta ="EUR">1500.3</atlyginimas>
+                    <telefonoNumeris>+37065214781</telefonoNumeris>
+                    <darboStazas trukme ="metai">3</darboStazas>
+                </darbuotojas>
+            </darbuotojuGrupe>
+            <darbuotojuGrupe tipas ="mechanikai">
+                <darbuotojas asmensKodas="56874125941">
+                    <vardas>Andrius</vardas>
+                    <pavarde>Kulys</pavarde>
+                    <gimimoData>1999-05-24</gimimoData>
+                    <pareigos>Mechanikas</pareigos>
+                    <atlyginimas valiuta ="EUR">1650.99</atlyginimas>
+                    <telefonoNumeris>+37065236514</telefonoNumeris>
+                    <darboStazas trukme ="metai">4</darboStazas>
+                </darbuotojas>
+                <darbuotojas asmensKodas="56214782365">
+                    <vardas>Saulius</vardas>
+                    <pavarde>Dziaugys</pavarde>
+                    <gimimoData>1987-08-24</gimimoData>
+                    <pareigos>Mechanikas</pareigos>
+                    <atlyginimas valiuta="EUR">1870.01</atlyginimas>
+                    <telefonoNumeris>+37065552014</telefonoNumeris>
+                    <darboStazas trukme ="metai">6</darboStazas>
+                </darbuotojas>   
+            </darbuotojuGrupe>
+        </darbuotojuGrupes>
+    </servisas>
+    <!--servisas>
+        ...
+    </servisas -->
+</servisai>
